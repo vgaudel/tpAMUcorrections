@@ -21,7 +21,7 @@ export class Ex08Effect {
       //console.log(this.mot());
     });
      effect(() => {
-      if(!this.isActive())return;
+      if(!this.isActive()) return;
       console.log(this.mot2());
     });
   }

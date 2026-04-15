@@ -13,8 +13,6 @@ export class EnfantExemple {
   incrementer() {this.modification.emit('+');}
   decrementer() {this.modification.emit('-');}
 
-
-
   constructor(){
     
     setTimeout(()=>this.incrementer(),1000);
