@@ -22,6 +22,7 @@ export class Ei10Boutique {
   total = computed(() => this.panier().reduce((sum, p) => sum + p.prix, 0));
 
   ajouterAuPanier(p: IProduitSimple) {
+    p.stock--;
     this.panier.update(items => [...items, p]);
   }
 }
