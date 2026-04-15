@@ -31,5 +31,5 @@ export class ExosSignals {
     'ex08-effect',
     'ex09-panier',
     'ex10-filtre'];
-  selectedComponent: string = this.composants[6];
+  selectedComponent: string = this.composants[0];
 }
