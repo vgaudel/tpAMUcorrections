@@ -30,7 +30,7 @@ export class UserFormV1 {
   role: Role = Role.User;
 
   onSubmit(): void {
-    console.log('User:', this.user, 'Role:', this.role);
+    //console.log('User:', this.user, 'Role:', this.role);
     this._userService.addUser(this.user);
     this._router.navigateByUrl("/welcome");
   }

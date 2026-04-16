@@ -10,6 +10,7 @@ export class UserService {
 
   addUser(user : IUser) :void{
     this.users.push(user);
+    console.log(this.users);
   }
 
 }

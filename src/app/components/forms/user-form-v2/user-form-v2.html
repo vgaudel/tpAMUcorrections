@@ -1,0 +1,79 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label> Nom d'utilisateur </label>
+        <input formControlName="userName" >
+        @let userName=form.get('userName');
+         @if(userName?.touched){
+            @if (userName?.hasError('required')) {
+                <span class="erreur">Champs requis</span>
+            }
+            @if (userName?.errors?.['minlength']) {
+                <span class="erreur">
+                    Minimum {{userName?.errors?.['minlength'].requiredLength}} caractères
+                    (actuellement {{userName?.errors?.['minlength'].actualLength}})
+                </span>
+            }
+        }
+    </div>
+
+    <div>
+        <label> Prénom </label>
+        <input formControlName="firstName" >
+       
+    </div>
+
+    <div>
+        <label> Nom </label>
+        <input formControlName="lastName" >
+        
+    </div>
+
+    <div>
+        <label> Email </label>
+        <input formControlName="email" >
+       
+    </div>
+
+    <div>
+        <label> Mot de passe </label>
+        <input formControlName="newPassword" type="password">
+    </div>
+
+
+    <div>
+        <label> Confirmation du mot de passe </label>
+        <input formControlName="confirmPassword" type="password">
+        @if(form.get('confirmPassword')?.touched && form.getError('differentPasswords')) {
+            <span>Les deux mots de passe sont différents</span>
+        }
+    </div>
+
+    <div>
+        <label>Roles</label>
+        <div formArrayName="roles">
+            @for(control of rolesArray.controls; track control){
+                <div>
+                    <select [formControl]="control">
+                        @for(r of roles; track r){
+                            <option [value]="r">{{r}}</option>
+                        }
+                    </select>
+                    <button type="button" (click)="retirerRole($index)">Retirer</button>
+                </div>
+            }
+        </div>
+        <button type="button" (click)="ajouterRole()"> + Ajouter un rôle</button>
+    </div>
+
+    <div>
+        <!--
+            userForm.invalid : vrai si au moins un champ du formulaire est invalide.
+            userForm.valid   : vrai si tous les champs passent leurs validateurs.
+            userForm.pending : vrai si un async validator est en attente (non utilisé ici).
+          -->
+        <button type="submit" [disabled]="form.invalid">Enregistrer</button>
+        <button (click)="reset()">Réinitialiser</button>
+    </div>
+
+</form>
