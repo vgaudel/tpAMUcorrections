@@ -1,69 +1,72 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-    <div>
-        <label> Nom d'utilisateur </label>
-        <input formControlName="userName" >
-        @let userName=form.get('userName');
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+ @let userName=form.get('userName');
+    <mat-form-field>
+        <mat-label> Nom d'utilisateur </mat-label>
+        <input matInput formControlName="userName">
          @if(userName?.touched){
             @if (userName?.hasError('required')) {
-                <span class="erreur">Champs requis</span>
+                <mat-error>Champs requis</mat-error>
             }
             @if (userName?.errors?.['minlength']) {
-                <span class="erreur">
+                <mat-error class="erreur">
                     Minimum {{userName?.errors?.['minlength'].requiredLength}} caractères
                     (actuellement {{userName?.errors?.['minlength'].actualLength}})
-                </span>
+                </mat-error>
             }
         }
-    </div>
+    </mat-form-field>
 
-    <div>
-        <label> Prénom </label>
-        <input formControlName="firstName" >
-       
-    </div>
+    <mat-form-field>
+        <mat-label> Prénom </mat-label>
+        <input matInput formControlName="firstName" >
+        <mat-error>Champ requis</mat-error> 
+    </mat-form-field>
 
-    <div>
-        <label> Nom </label>
-        <input formControlName="lastName" >
-        
-    </div>
+    <mat-form-field>
+        <mat-label> Nom </mat-label>
+        <input matInput formControlName="lastName" >
+        <mat-error>Champ requis</mat-error> 
+    </mat-form-field>
 
-    <div>
-        <label> Email </label>
-        <input formControlName="email" >
-       
-    </div>
+    <mat-form-field>
+        <mat-label> Email </mat-label>
+        <input  matInput formControlName="email" >
+        <mat-error>Adresse email invalide</mat-error> 
+    </mat-form-field>
 
-    <div>
-        <label> Mot de passe </label>
-        <input formControlName="newPassword" type="password">
-    </div>
+    <mat-form-field>
+        <mat-label> Mot de passe </mat-label>
+        <input matInput formControlName="newPassword" type="password">
+        <mat-error>Champ requis</mat-error> 
+    </mat-form-field>
 
 
-    <div>
-        <label> Confirmation du mot de passe </label>
-        <input formControlName="confirmPassword" type="password">
+    <mat-form-field>
+        <mat-label> Confirmation du mot de passe </mat-label>
+        <input matInput formControlName="confirmPassword" type="password">
         @if(form.get('confirmPassword')?.touched && form.getError('differentPasswords')) {
             <span>Les deux mots de passe sont différents</span>
         }
-    </div>
+    </mat-form-field>
 
     <div>
-        <label>Roles</label>
+        <mat-label>Roles</mat-label>
         <div formArrayName="roles">
             @for(control of rolesArray.controls; track control){
-                <div>
-                    <select [formControl]="control">
+                <mat-form-field>
+                    <mat-select [formControl]="control">
                         @for(r of roles; track r){
-                            <option [value]="r">{{r}}</option>
+                            <mat-option [value]="r">{{r}}</mat-option>
                         }
-                    </select>
-                    <button type="button" (click)="retirerRole($index)">Retirer</button>
-                </div>
+                    </mat-select>
+                    
+                </mat-form-field>
+                <button mat-icon-button type="button" (click)="retirerRole($index)">
+                    <mat-icon>delete</mat-icon>
+                </button>
             }
         </div>
-        <button type="button" (click)="ajouterRole()"> + Ajouter un rôle</button>
+        
     </div>
 
     <div>
@@ -72,8 +75,11 @@
             userForm.valid   : vrai si tous les champs passent leurs validateurs.
             userForm.pending : vrai si un async validator est en attente (non utilisé ici).
           -->
-        <button type="submit" [disabled]="form.invalid">Enregistrer</button>
-        <button (click)="reset()">Réinitialiser</button>
+        <button mat-flat-button type="submit" [disabled]="form.invalid">Enregistrer</button>
+        <button mat-stroked-button (click)="reset()">Réinitialiser</button>
+        <button mat-stroked-button type="button" (click)="ajouterRole()"> 
+            <mat-icon>add</mat-icon> Ajouter un rôle
+        </button>
     </div>
 
 </form>

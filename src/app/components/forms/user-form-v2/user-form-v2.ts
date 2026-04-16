@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Role } from '../../../model/Role';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
-@Component({
+@Component({ 
   selector: 'app-user-form-v2',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatSelectModule, 
+    MatButtonModule, 
+    MatIconModule],
   templateUrl: './user-form-v2.html',
   styleUrl: './user-form-v2.scss',
 })

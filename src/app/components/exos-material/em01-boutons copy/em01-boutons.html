@@ -1,0 +1,10 @@
+<h3>Em01 — Boutons et variantes</h3>
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem">
+  <button mat-button        (click)="incrementer()">Basic</button>
+  <button mat-raised-button  (click)="incrementer()">Raised</button>
+  <button mat-stroked-button (click)="incrementer()">Stroked</button>
+  <button mat-flat-button    (click)="incrementer()">Flat</button>
+</div>
+
+<p>Total clics : <strong>{{ clics() }}</strong></p>

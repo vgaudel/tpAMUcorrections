@@ -1,0 +1,34 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.roles-label {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.role-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .role-select {
+    flex: 1;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
