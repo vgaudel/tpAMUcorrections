@@ -57,5 +57,8 @@ export interface ISpaceNewsArticle {
 
 // Type de la réponse du fichier JSON local { "news": [...] }
 export interface ISpaceNewsResponse {
-  news: ISpaceNewsArticle[];
+  count: number,
+  next: string,
+  previous: string,
+  results: ISpaceNewsArticle[]
 }

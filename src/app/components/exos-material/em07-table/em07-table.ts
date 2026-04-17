@@ -8,7 +8,7 @@ interface Employe {
   departement:  string;
   salaire:      number;
 }
-
+ 
 const EMPLOYES: Employe[] = [
   { nom: 'Alice',  departement: 'RH',           salaire: 3200 },
   { nom: 'Bob',    departement: 'Informatique',  salaire: 4100 },

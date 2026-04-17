@@ -9,6 +9,8 @@ import { UserFormV2 } from './components/forms/user-form-v2/user-form-v2';
 import { SpaceNews } from './components/bootstrap/space-news/space-news';
 import { ExosMaterial } from './components/exos-material/exos-material';
 import { ExemplesObservables } from './components/exemples-observables/exemples-observables';
+import { ProductApi } from './components/product-api/product-api';
+//import { ProductForm } from './components/product-form/product-form';
 
 export const routes: Routes = [
 
@@ -22,6 +24,8 @@ export const routes: Routes = [
     { path : 'spacenews', component : SpaceNews},
     { path : 'material', component : ExosMaterial},
     { path : 'observable', component : ExemplesObservables},
+    //{ path : 'products/new', component : ProductForm},
+    { path : 'products', component : ProductApi},
     { path : '**', component : NotFound }
 
 ];
